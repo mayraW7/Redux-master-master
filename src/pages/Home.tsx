@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
@@ -70,47 +70,66 @@ const Home: React.FC = () => {
             flexDirection: "column",
             boxShadow: "2px 8px 10px #000000",
             borderRadius: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
           <Grid item xs={12}>
             <Grid container>
-           
               <Grid item xs={12}>
-              <img src={logo} alt="logo" style = {{ width: "150px", margin: "0px"}}/>
-                <h1 style={{ color:"#1976d2", margin: "0px"}}> Carteira Growdev</h1>
+                <img
+                  src={logo}
+                  alt="logo"
+                  style={{ width: "150px", margin: "0px" }}
+                />
+                <h1 style={{ color: "#1976d2", margin: "0px" }}>
+                  {" "}
+                  Carteira Growdev
+                </h1>
               </Grid>
               <Grid item sx={{ fontSize: "40px", margin: "0px" }} xs={12}>
                 R$
                 {walletRedux.balance}
               </Grid>
               <Grid item xs={12}>
-                <h3  style={{ textAlign: 'start', color:"#1976d2", margin: "0px"}}><MonetizationOnIcon fontSize="large"/>  SALDO + LIMITE:</h3>
+                <h3
+                  style={{
+                    textAlign: "start",
+                    color: "#1976d2",
+                    margin: "0px",
+                  }}
+                >
+                  <MonetizationOnIcon fontSize="large" /> SALDO + LIMITE:
+                </h3>
                 <p style={{ fontSize: "40px", margin: "0px" }}>
                   R${walletRedux.balance + 1000}
                 </p>
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} sx={{
-            borderRadius: 3,
-          }}>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              borderRadius: 3,
+            }}
+          >
             <TextField
               id="filled-basic"
               label="Valor"
               fullWidth
               variant="filled"
               type="text"
-              sx={{borderRadius: 2,
+              sx={{
+                borderRadius: 2,
                 boxShadow: "2px 3px 5px #000000",
-                marginBottom:"5px",
-             }}
+                marginBottom: "5px",
+              }}
               value={valor}
               onChange={(ev) => setValor(Number(ev.target.value))}
             />
           </Grid>
-          <Grid item xs={12} style={{ textAlign: 'start'}}>
-            <FormControl >
+          <Grid item xs={12} style={{ textAlign: "start" }}>
+            <FormControl>
               <FormLabel id="demo-row-radio-buttons-group-label">
                 Tipo:
               </FormLabel>
@@ -135,20 +154,35 @@ const Home: React.FC = () => {
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <Button     sx={{borderRadius: 2,
+            <Button
+              sx={{
+                borderRadius: 2,
                 boxShadow: "2px 3px 5px #000000",
-                marginBottom:"5px",
-                height: "50px"
-             }}variant="contained" onClick={deposito} fullWidth>
+                marginBottom: "5px",
+                height: "50px",
+              }}
+              variant="contained"
+              onClick={deposito}
+              fullWidth
+            >
               Enviar
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Paper elevation={2} sx={{ padding: "5px", mt: "20px", borderRadius: 2,
-                boxShadow: "2px 3px 5px #000000", }}>
-              <Grid container >
-                <Grid item xs={6} >
-                  <Typography variant="h6" sx={{ color: 'primary.main' }} >Entradas</Typography>
+            <Paper
+              elevation={2}
+              sx={{
+                padding: "5px",
+                mt: "20px",
+                borderRadius: 2,
+                boxShadow: "2px 3px 5px #000000",
+              }}
+            >
+              <Grid container>
+                <Grid item xs={6}>
+                  <Typography variant="h6" sx={{ color: "primary.main" }}>
+                    Entradas
+                  </Typography>
                   {walletRedux.income.map((item, index) => {
                     return (
                       <div key={index}>
@@ -157,9 +191,10 @@ const Home: React.FC = () => {
                     );
                   })}
                 </Grid>
-                <Grid item xs={6} sx={{borderRadius: 2,
-             }}>
-                  <Typography variant="h6"sx={{ color: 'error.main' }}>Saídas</Typography>
+                <Grid item xs={6} sx={{ borderRadius: 2 }}>
+                  <Typography variant="h6" sx={{ color: "error.main" }}>
+                    Saídas
+                  </Typography>
                   {walletRedux.outcome.map((item, index) => {
                     return (
                       <div key={index}>
@@ -169,7 +204,6 @@ const Home: React.FC = () => {
                   })}
                 </Grid>
               </Grid>
-              
             </Paper>
           </Grid>
         </Paper>
@@ -177,8 +211,5 @@ const Home: React.FC = () => {
     </React.Fragment>
   );
 };
-
-export default Home;
-  const dispatch = useAppDispatch();
 
 export default Home;
