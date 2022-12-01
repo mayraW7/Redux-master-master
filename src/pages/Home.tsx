@@ -90,14 +90,16 @@ const Home: React.FC = () => {
                 R$
                 {walletRedux.balance}
               </Grid>
-              <Grid item xs={12}>
-                <h3
-                  style={{
-                    textAlign: "start",
-                    color: "#1976d2",
-                    margin: "0px",
-                  }}
-                >
+              <Grid
+                item
+                sx={{
+                  textAlign: "center",
+                  color: "#1976d2",
+                  margin: "0px",
+                }}
+                xs={12}
+              >
+                <h3>
                   <MonetizationOnIcon fontSize="large" /> SALDO + LIMITE:
                 </h3>
                 <p style={{ fontSize: "40px", margin: "0px" }}>
