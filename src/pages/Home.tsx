@@ -10,7 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import PriceChangeIcon from '@mui/icons-material/PriceChange';
+
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
@@ -19,7 +19,6 @@ import {
   addOutcome,
   updateBalance,
 } from "../store/modules/WalletSlice";
-
 
 import logo from "./logo.png";
 
@@ -180,162 +179,6 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+  const dispatch = useAppDispatch();
 
-// import React, { useCallback, useEffect, useState } from "react";
-// import {
-//   Button,
-//   Dialog,
-//   DialogActions,
-//   DialogContent,
-//   DialogContentText,
-//   DialogTitle,
-//   Grid,
-//   Paper,
-//   TextField,
-// } from "@mui/material";
-// import FormContact from "../components/FormContact/FormContact";
-// import ItemContact from "../components/ItemContact/ItemContact";
-// import { useAppDispatch, useAppSelector } from "../store/hooks";
-// import { useNavigate } from "react-router-dom";
-// import {
-//   addContact,
-//   addMany,
-//   deleteContact,
-//   selectContacts,
-//   updateContact,
-// } from "../store/modules/WalletSlice";
-// import Message from "../components/Message";
-
-// const Home: React.FC = () => {
-//   const [openEdit, setOpenEdit] = useState<boolean>(false);
-//   const [saveOption, setSaveOption] = useState<boolean>(false);
-//   const [contactEdit, setContactEdit] = useState<string>("");
-//   const [inputEdit, setinputEdit] = useState<ContactType>({
-//     name: "",
-//     phone: "",
-//   });
-//   const contactsRedux = useAppSelector(selectContacts);
-//   const loginRedux = useAppSelector((state) => state.login);
-//   const dispatch = useAppDispatch();
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     if (saveOption === true) {
-//       localStorage.setItem("notes", JSON.stringify(contactsRedux));
-//     }
-//   }, [contactsRedux, saveOption]);
-
-//   const handleAddContact = useCallback(
-//     (contact: ContactType) => {
-//       setSaveOption(true);
-//       dispatch(addContact(contact));
-//     },
-//     [dispatch]
-//   );
-
-//   const handleDeleteContact = useCallback(
-//     (contact: ContactType) => {
-//       setSaveOption(true);
-//       dispatch(deleteContact(contact.phone));
-//     },
-//     [dispatch]
-//   );
-
-//   const openEditModal = useCallback((contact: ContactType) => {
-//     const contactUpdate: ContactType = {
-//       name: contact.name,
-//       phone: contact.phone,
-//     };
-//     setinputEdit(contactUpdate);
-//     setContactEdit(contact.phone);
-//     setOpenEdit(true);
-//   }, []);
-
-//   const handleEditContact = () => {
-//     dispatch(
-//       updateContact({
-//         id: contactEdit,
-//         changes: { name: inputEdit.name, phone: inputEdit.phone },
-//       })
-//     );
-//     setOpenEdit(false);
-//   };
-
-//   const handleClose = () => {
-//     setOpenEdit(false);
-//   };
-
-//   return (
-//     <Grid container spacing={2}>
-//       <Grid item xs={12}>
-//         <FormContact action={handleAddContact} />
-//         <Message />
-//       </Grid>
-//       <Grid item xs={12}>
-//         <Paper elevation={2} sx={{ padding: "5px" }}>
-//           {contactsRedux.map((item) => {
-//             return (
-//               <ItemContact
-//                 key={item.phone}
-//                 contact={item}
-//                 actionDelete={() => handleDeleteContact(item)}
-//                 actionEdit={() => openEditModal(item)}
-//               />
-//             );
-//           })}
-//         </Paper>
-//       </Grid>
-//       <Dialog open={openEdit} onClose={handleClose}>
-//         <DialogTitle>Editar Contato</DialogTitle>
-//         <DialogContent>
-//           <DialogContentText>
-//             Utilize os campos para editar o contato:
-//           </DialogContentText>
-//           <TextField
-//             autoFocus
-//             margin="dense"
-//             id="name"
-//             label="Nome"
-//             type="text"
-//             onChange={(ev) =>
-//               setinputEdit({
-//                 name: ev.target.value,
-//                 phone: inputEdit.phone,
-//               })
-//             }
-//             fullWidth
-//             value={inputEdit.name}
-//             variant="outlined"
-//           />
-//           <TextField
-//             autoFocus
-//             margin="dense"
-//             id="number"
-//             label="Número"
-//             onChange={(ev) =>
-//               setinputEdit({
-//                 name: inputEdit.name,
-//                 phone: ev.target.value,
-//               })
-//             }
-//             inputProps={{ maxLength: 11 }}
-//             value={inputEdit.phone}
-//             type="text"
-//             fullWidth
-//             variant="outlined"
-//           />
-//         </DialogContent>
-//         <DialogActions>
-//           <Button variant="outlined" onClick={handleClose}>
-//             Cancelar
-//           </Button>
-//           <Button variant="contained" onClick={handleEditContact}>
-//             Salvar
-//           </Button>
-//         </DialogActions>
-//       </Dialog>
-//     </Grid>
-//   );
-// };
-
-// export default Home;
+export default Home;
