@@ -100,7 +100,7 @@ const Home: React.FC = () => {
                 xs={12}
               >
                 <h3>
-                  <MonetizationOnIcon fontSize="large" /> SALDO + LIMITE:
+                  <MonetizationOnIcon fontSize="large" sx={{m:0}} /> SALDO + LIMITE:
                 </h3>
                 <p style={{ fontSize: "40px", margin: "0px" }}>
                   R${walletRedux.balance + 1000}
