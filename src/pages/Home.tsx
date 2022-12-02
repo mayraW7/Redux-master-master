@@ -20,7 +20,7 @@ import {
   updateBalance,
 } from "../store/modules/WalletSlice";
 
-import logo from "./logo.png";
+import { addOneTransaction } from "../store/modules/TransactionsSlice";
 
 const Home: React.FC = () => {
   const [valor, setValor] = useState<number>(0);
@@ -34,8 +34,15 @@ const Home: React.FC = () => {
       return;
     }
     if (type === "income") {
-      dispatch(addIncome(valor));
-      dispatch(updateBalance());
+      dispatch(
+        addOneTransaction({
+          id: 1,
+          type: "c",
+          value: 5000,
+        })
+      );
+      // dispatch(addIncome(valor));
+      // dispatch(updateBalance());
       setValor(0);
     } else {
       if (walletRedux.balance - valor <= -1001) {
@@ -77,19 +84,23 @@ const Home: React.FC = () => {
             <Grid container>
               <Grid item xs={12}>
                 <img
-                  src={logo}
+                  src="/assets/images/logo.png"
                   alt="logo"
-                  style={{ width: "150px", margin: "0px" }}
+                  style={{ width: "30%" }}
                 />
-                <h1 style={{ color: "#1976d2", margin: "0px" }}>
-                  {" "}
+                <Typography variant="h3" style={{ color: "#1976d2" }}>
                   Carteira Growdev
-                </h1>
+                </Typography>
+                <Typography variant="h4">
+                  R$
+                  {walletRedux.balance}
+                </Typography>
               </Grid>
-              <Grid item sx={{ fontSize: "40px", margin: "0px" }} xs={12}>
-                R$
-                {walletRedux.balance}
-              </Grid>
+              <Grid
+                item
+                sx={{ fontSize: "40px", margin: "0px" }}
+                xs={12}
+              ></Grid>
               <Grid
                 item
                 sx={{
@@ -100,9 +111,10 @@ const Home: React.FC = () => {
                 xs={12}
               >
                 <h3>
-                  <MonetizationOnIcon fontSize="large" sx={{m:0}} /> SALDO + LIMITE:
+                  <MonetizationOnIcon fontSize="large" />
+                  SALDO + LIMITE:
                 </h3>
-                <p style={{ fontSize: "40px", margin: "0px" }}>
+                <p style={{ fontSize: "40px" }}>
                   R${walletRedux.balance + 1000}
                 </p>
               </Grid>

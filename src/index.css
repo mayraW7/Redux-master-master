@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 body {
   margin: 0;
-  font-family: "Roboto";
+  font-family: "Permanent Marker", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url(../src/img/wallpaperflare.com_wallpaper.jpg);
@@ -10,8 +10,4 @@ body {
   background-size: cover;
   height: 100vh;
   width: 100vw;
-}
-
-code {
-  font-family: 'Permanent Marker', cursive;
 }
