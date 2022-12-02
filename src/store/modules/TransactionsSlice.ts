@@ -1,11 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "..";
-
-export interface transactionType {
-  id: number;
-  value: number;
-  type: "c" | "d";
-}
+import { transactionType } from "../../types/";
 
 const adapter = createEntityAdapter<transactionType>({
   selectId: (item) => item.id,

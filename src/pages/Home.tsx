@@ -14,18 +14,14 @@ import {
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import {
-  addIncome,
-  addOutcome,
-  updateBalance,
-} from "../store/modules/WalletSlice";
 
 import { addOneTransaction } from "../store/modules/TransactionsSlice";
 
 const Home: React.FC = () => {
   const [valor, setValor] = useState<number>(0);
-  const [type, setType] = useState<string>("income");
+  const [type, setType] = useState<"c" | "d" | string>("c");
   const walletRedux = useAppSelector((state) => state.wallet);
+  const walletReduxAdapter = useAppSelector((state) => state.transactions);
   const dispatch = useAppDispatch();
 
   const deposito = () => {
@@ -33,24 +29,26 @@ const Home: React.FC = () => {
       alert("Digite um número maior ou igual a zero.");
       return;
     }
-    if (type === "income") {
+    if (type === "c") {
       dispatch(
         addOneTransaction({
-          id: 1,
-          type: "c",
-          value: 5000,
+          id: (new Date().getTime() / 1000) * Math.random(),
+          type: type,
+          value: valor,
         })
       );
-      // dispatch(addIncome(valor));
-      // dispatch(updateBalance());
+
       setValor(0);
     } else {
       if (walletRedux.balance - valor <= -1001) {
         alert("voce chegou no cheque especial");
         return;
       }
-      dispatch(addOutcome(valor));
-      dispatch(updateBalance());
+      addOneTransaction({
+        id: 1,
+        type: type,
+        value: valor,
+      });
       setValor(0);
     }
   };
@@ -155,15 +153,11 @@ const Home: React.FC = () => {
                 value={type}
               >
                 <FormControlLabel
-                  value="income"
+                  value="c"
                   control={<Radio />}
                   label="Entrada"
                 />
-                <FormControlLabel
-                  value="outcome"
-                  control={<Radio />}
-                  label="Saída"
-                />
+                <FormControlLabel value="d" control={<Radio />} label="Saída" />
               </RadioGroup>
             </FormControl>
           </Grid>
